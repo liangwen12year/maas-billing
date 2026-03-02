@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://opendatahub-io.github.io/models-as-a-service/dev/install/maas-setup/">
       
       
-        <link rel="prev" href="../rhoai-setup/">
+        <link rel="prev" href="../platform-setup/">
       
       
         <link rel="next" href="../validation/">
@@ -21,7 +21,7 @@
       
       
       <link rel="icon" href="../../assets/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.3">
     
     
       
@@ -29,7 +29,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#install-models-as-a-service" class="md-skip">
+        <a href="#install-maas-components" class="md-skip">
           Skip to content
         </a>
       
@@ -609,69 +609,15 @@
   
   
   
-    
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_1_2" >
-        
-          
-          <label class="md-nav__link" for="__nav_4_1_2" id="__nav_4_1_2_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Operators
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_1_2">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Operators
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
     <li class="md-nav__item">
-      <a href="../odh-setup/" class="md-nav__link">
+      <a href="../platform-setup/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Open Data Hub
+    Operator Setup
   
 
     
@@ -680,42 +626,6 @@
   
 
       </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../rhoai-setup/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Red Hat OpenShift AI
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
     </li>
   
 
@@ -853,30 +763,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#install-maas-using-the-kustomize-manifest" class="md-nav__link">
+  <a href="#install-gateway-authpolicy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Install MaaS using the Kustomize manifest
+        Install Gateway AuthPolicy
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Install MaaS using the Kustomize manifest">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#policy-audience-adjustment" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Policy audience adjustment
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1105,6 +998,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configuration-and-management/tls-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TLS Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1147,6 +1068,62 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../../configuration-and-management/model-listing-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model Listing Flow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configuration-and-management/maas-model-kinds/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MaaSModel Kinds (future)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
     
     
     
@@ -1166,10 +1143,159 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_5" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_7" >
         
           
-          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="">
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Known Issues
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Known Issues
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configuration-and-management/group-membership-known-issues/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Group Membership
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configuration-and-management/tier-modification-known-issues/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tier Modification
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../configuration-and-management/model-access-behavior/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model Access
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_8" id="__nav_4_8_label" tabindex="">
             
   
   
@@ -1187,8 +1313,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_5">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_8">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1241,6 +1367,34 @@
     
   
     Limitador Persistence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced-administration/storage-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Storage Configuration
   
 
     
@@ -1385,30 +1539,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#install-maas-using-the-kustomize-manifest" class="md-nav__link">
+  <a href="#install-gateway-authpolicy" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Install MaaS using the Kustomize manifest
+        Install Gateway AuthPolicy
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Install MaaS using the Kustomize manifest">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#policy-audience-adjustment" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Policy audience adjustment
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1443,69 +1580,40 @@
   
 
 
-<h1 id="install-models-as-a-service">Install Models-as-a-Service</h1>
-<p>The Models-as-a-Service (MaaS) of ODH project is provided as standalone capability. 
-Provided you have an OpenShift cluster where you had either:</p>
+<h1 id="install-maas-components">Install MaaS Components</h1>
+<p>After enabling MaaS in your DataScienceCluster (set <code>modelsAsService.managementState: Managed</code>
+in the <code>spec.components.kserve</code> section - see <a href="../platform-setup/#install-platform-with-model-serving">platform setup guide</a>
+for the complete configuration), the operator will automatically deploy:</p>
 <ul>
-<li><a href="../odh-setup/">installed Open Data Hub project</a>;</li>
-<li>or had <a href="../rhoai-setup/">installed Red Hat OpenShift AI</a></li>
+<li><strong>MaaS API</strong> (Deployment, Service, ServiceAccount, ClusterRole, ClusterRoleBinding, HTTPRoute)</li>
+<li><strong>MaaS API AuthPolicy</strong> (maas-api-auth-policy) - Protects the MaaS API endpoint</li>
+<li><strong>NetworkPolicy</strong> (maas-authorino-allow) - Allows Authorino to reach MaaS API</li>
 </ul>
-<p>then you can proceed to install MaaS capabilities by following this guide.</p>
+<p>You must manually install the following components after completing the <a href="../platform-setup/">platform setup</a>
+(which includes creating the required <code>maas-default-gateway</code>):</p>
 <p>The tools you will need:</p>
 <ul>
 <li><code>kubectl</code> or <code>oc</code> client (this guide uses <code>kubectl</code>)</li>
 <li><code>kustomize</code></li>
-<li><code>jq</code></li>
 <li><code>envsubst</code></li>
-<li><code>base64</code></li>
-<li><code>cut</code></li>
 </ul>
-<h2 id="install-maas-using-the-kustomize-manifest">Install MaaS using the Kustomize manifest</h2>
-<p>Install MaaS by running the following commands:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">CLUSTER_DOMAIN</span><span class="o">=</span><span class="k">$(</span>kubectl<span class="w"> </span>get<span class="w"> </span>ingresses.config.openshift.io<span class="w"> </span>cluster<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">&#39;{.spec.domain}&#39;</span><span class="k">)</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>kubectl<span class="w"> </span>create<span class="w"> </span>namespace<span class="w"> </span>maas-api
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>kubectl<span class="w"> </span>apply<span class="w"> </span>--server-side<span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span>-f<span class="w"> </span>&lt;<span class="o">(</span>kustomize<span class="w"> </span>build<span class="w"> </span><span class="s2">&quot;https://github.com/opendatahub-io/models-as-a-service.git/deployment/overlays/openshift?ref=main&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">       </span>envsubst<span class="w"> </span><span class="s1">&#39;$CLUSTER_DOMAIN&#39;</span><span class="o">)</span>
+<h2 id="install-gateway-authpolicy">Install Gateway AuthPolicy</h2>
+<p>The maas-controller deploys gateway-level AuthPolicy and TokenRateLimitPolicy from
+<code>maas-controller/config/policies</code>. When using the ODH overlay or deploy script, these
+are applied automatically. For manual install:</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>kubectl<span class="w"> </span>apply<span class="w"> </span>--server-side<span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span>-f<span class="w"> </span>&lt;<span class="o">(</span>kustomize<span class="w"> </span>build<span class="w"> </span><span class="s2">&quot;https://github.com/opendatahub-io/models-as-a-service.git/maas-controller/config/policies?ref=main&quot;</span><span class="o">)</span>
 </code></pre></div>
-<p>The Kustomize manifest will:</p>
-<ul>
-<li>Create a Gateway as the ingress point for any traffic related to MaaS (for inference 
-  and for the MaaS API).</li>
-<li>Install the support MaaS API (<code>Deployment</code>, <code>Service</code>, <code>ServiceAccount</code>, 
-  <code>ClusterRole</code>, <code>ClusterRoleBinding</code>, <code>HTTPRoute</code>, and its <code>AuthPolicy</code>).</li>
-<li>Install predefined policies: authentication, authorization and rate limits (See 
-  <a href="../../configuration-and-management/tier-overview/">Tier Management</a>)</li>
-</ul>
-<h3 id="policy-audience-adjustment">Policy audience adjustment</h3>
-<p>The default audience of Kubernetes clusters is usually <code>https://kubernetes.default.svc</code>.
-You can check the audience of your cluster with the following commands:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nv">AUD</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>kubectl<span class="w"> </span>create<span class="w"> </span>token<span class="w"> </span>default<span class="w"> </span>--duration<span class="o">=</span>10m<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-d.<span class="w"> </span>-f2<span class="w"> </span><span class="p">|</span><span class="w"> </span>base64<span class="w"> </span>-d<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.aud[0]&#39;</span><span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="k">)</span><span class="s2">&quot;</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">echo</span><span class="w"> </span><span class="nv">$AUD</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># Output:</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="c1">#   https://kubernetes.default.svc</span>
-</code></pre></div>
-<p>The Kustomize manifest uses the default audience for the installed MaaS API policy. If 
-the output of the previous script is different from a non-empty string and 
-<code>https://kubernetes.default.svc</code>, you are required to patch the policy of the MaaS API:</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>kubectl<span class="w"> </span>patch<span class="w"> </span>authpolicy<span class="w"> </span>maas-api-auth-policy<span class="w"> </span>-n<span class="w"> </span>maas-api<span class="w"> </span>--type<span class="o">=</span>merge<span class="w"> </span>--patch-file<span class="w"> </span>&lt;<span class="o">(</span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;  </span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="s2">spec:</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="s2">  rules:</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="s2">    authentication:</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="s2">      openshift-identities:</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="s2">        kubernetesTokenReview:</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="s2">          audiences:</span>
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="s2">            - </span><span class="nv">$AUD</span>
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="s2">            - maas-default-gateway-sa&quot;</span><span class="o">)</span>
-</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Custom Token Review Audience</p>
+<p>If you encounter <code>401 Unauthorized</code> errors when obtaining tokens, your cluster may use a custom token review audience. See <a href="../validation/#common-issues">Troubleshooting - 401 Errors</a> for detection and resolution steps.</p>
+</div>
 <h2 id="next-steps">Next steps</h2>
 <ul>
-<li><strong>Deploy models.</strong> In the Quick Start, we provide
-  <a href="../../quickstart/#deploy-sample-models-optional">sample deployments</a> that you 
+<li><strong>Deploy models.</strong> See the Quick Start for
+  <a href="../../quickstart/#model-setup">sample model deployments</a> that you
   can use to try the MaaS capability.</li>
-<li><strong>Perform validation.</strong> Follow the <a href="../validation/">validation guide</a> to verify that 
+<li><strong>Perform validation.</strong> Follow the <a href="../validation/">validation guide</a> to verify that
   MaaS is working correctly.</li>
 </ul>
 
@@ -1530,7 +1638,7 @@ the output of the previous script is different from a non-empty string and
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="December 15, 2025 10:20:14 UTC">December 15, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 27, 2026 17:58:09 UTC">February 27, 2026</span>
   </span>
 
     
@@ -1595,10 +1703,10 @@ the output of the previous script is different from a non-empty string and
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy", "content.code.annotate", "search.suggest", "search.boost", "navigation.instant"], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy", "content.code.annotate", "search.suggest", "search.boost", "navigation.instant"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>

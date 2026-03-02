@@ -14,14 +14,14 @@
         <link rel="prev" href="../tier-concepts/">
       
       
-        <link rel="next" href="../model-setup/">
+        <link rel="next" href="../tls-configuration/">
       
       
         
       
       
       <link rel="icon" href="../../assets/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.3">
     
     
       
@@ -29,7 +29,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -609,69 +609,15 @@
   
   
   
-    
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_1_2" >
-        
-          
-          <label class="md-nav__link" for="__nav_4_1_2" id="__nav_4_1_2_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Operators
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_1_2">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Operators
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
     <li class="md-nav__item">
-      <a href="../../install/odh-setup/" class="md-nav__link">
+      <a href="../../install/platform-setup/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Open Data Hub
+    Operator Setup
   
 
     
@@ -680,42 +626,6 @@
   
 
       </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../install/rhoai-setup/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Red Hat OpenShift AI
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
     </li>
   
 
@@ -1119,6 +1029,34 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#model-discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Model Discovery
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Model Discovery">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-it-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Works
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#practical-usage" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1199,6 +1137,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tls-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TLS Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1241,6 +1207,62 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../model-listing-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model Listing Flow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../maas-model-kinds/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MaaSModel Kinds (future)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
     
     
     
@@ -1260,10 +1282,159 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_5" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_7" >
         
           
-          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="">
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Known Issues
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Known Issues
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../group-membership-known-issues/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Group Membership
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tier-modification-known-issues/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tier Modification
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../model-access-behavior/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model Access
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_8" id="__nav_4_8_label" tabindex="">
             
   
   
@@ -1281,8 +1452,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_5">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_8">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1335,6 +1506,34 @@
     
   
     Limitador Persistence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced-administration/storage-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Storage Configuration
   
 
     
@@ -1540,6 +1739,34 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#model-discovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Model Discovery
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Model Discovery">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-it-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How It Works
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#practical-usage" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1644,6 +1871,7 @@ See <a href="../tier-configuration/">Configuring Subscription Tiers</a> for setu
 <ol>
 <li><a href="#overview">Overview</a></li>
 <li><a href="#how-token-issuance-works">How Token Issuance Works</a></li>
+<li><a href="#model-discovery">Model Discovery</a></li>
 <li><a href="#practical-usage">Practical Usage</a></li>
 <li><a href="#token-lifecycle-management">Token Lifecycle Management</a></li>
 <li><a href="#frequently-asked-questions-faq">Frequently Asked Questions (FAQ)</a></li>
@@ -1707,13 +1935,33 @@ purpose-built identity in the form of a Kubernetes Service Account.</p>
     Model--&gt;&gt;Gateway: Response
     Gateway--&gt;&gt;User: Response</code></pre>
 <hr />
+<h2 id="model-discovery">Model Discovery</h2>
+<p>The <code>/v1/models</code> endpoint allows you to discover which models you're authorized to access. This endpoint works with any valid authentication token — you don't need to create an API key first.</p>
+<h3 id="how-it-works">How It Works</h3>
+<p>When you call <strong>GET /v1/models</strong> with an <strong>Authorization</strong> header, the API passes that header <strong>as-is</strong> to each model's <code>/v1/models</code> endpoint to validate access. Only models that return 2xx or 405 are included in the list. No token exchange or modification is performed; the same header you send is used for the probe.</p>
+<pre class="mermaid"><code>flowchart LR
+    A[Your Request\nAuthorization header] --&gt; B[List MaaSModels]
+    B --&gt; C[Probe each model endpoint\nwith same header]
+    C --&gt; D[Return only models\nthat allow access]</code></pre>
+<p>This means you can:</p>
+<ol>
+<li><strong>Authenticate with OpenShift or OIDC</strong> — use your existing identity and the same token you would use for inference.</li>
+<li><strong>Call <code>/v1/models</code> immediately</strong> — see only the models you can access, without creating an API key first.</li>
+</ol>
+<div class="admonition info">
+<p class="admonition-title">Future: Token minting</p>
+<p>Once MaaS API token minting is in place, the implementation may be revisited (e.g. minting a short-lived token for gateway auth when the client's token has a different audience). For now, the Authorization header is always passed through as-is.</p>
+</div>
+<hr />
 <h2 id="practical-usage">Practical Usage</h2>
 <p>For step-by-step instructions on obtaining and using tokens to access models, including practical examples and troubleshooting, see the <a href="../../user-guide/self-service-model-access/">Self-Service Model Access Guide</a>.</p>
-<p>That guide provides:
-- Complete walkthrough for getting your OpenShift token
-- How to request an access token from the API
-- Examples of making inference requests with your token
-- Troubleshooting common authentication issues</p>
+<p>That guide provides:</p>
+<ul>
+<li>Complete walkthrough for getting your OpenShift token</li>
+<li>How to request an access token from the API</li>
+<li>Examples of making inference requests with your token</li>
+<li>Troubleshooting common authentication issues</li>
+</ul>
 <hr />
 <h2 id="token-lifecycle-management">Token Lifecycle Management</h2>
 <p>Access tokens are ephemeral and must be managed accordingly.</p>
@@ -1725,9 +1973,11 @@ purpose-built identity in the form of a Kubernetes Service Account.</p>
 </ul>
 <p>When a token expires, any API request using it will fail with an <code>HTTP 401 Unauthorized error</code>. 
 To continue, you must request a new token using the process described above.</p>
-<p><strong>Tips:</strong>
-- For interactive use, request tokens with a lifetime that covers your session (e.g., 4h).
-- For automated scripts or applications, implement logic to refresh the token proactively before it expires.</p>
+<p><strong>Tips:</strong></p>
+<ul>
+<li>For interactive use, request tokens with a lifetime that covers your session (e.g., 4h).</li>
+<li>For automated scripts or applications, implement logic to refresh the token proactively before it expires.</li>
+</ul>
 <h3 id="token-revocation">Token Revocation</h3>
 <p>You can invalidate all active tokens associated with your user account. This is a key security feature if you believe a token has been exposed.</p>
 <p>To revoke all your tokens, send a <code>DELETE</code> request to the <code>/v1/tokens</code> endpoint.</p>
@@ -1760,6 +2010,15 @@ are in the correct user group, which should be mapped to your desired tier in th
 <p><strong>Q: Can I use one token to access multiple different models?</strong></p>
 <p>A: Yes. Your token grants you access based on your tier's RBAC permissions. If your tier is authorized to use multiple models, a single token will work for all of them.</p>
 <hr />
+<p><strong>Q: What's the difference between my OpenShift token and an API key?</strong></p>
+<p>A: Your <strong>OpenShift token</strong> is your identity token from authentication (e.g. OpenShift or OIDC). An <strong>API key</strong> (issued via <code>/v1/tokens</code>) is a service account token with the correct audience and permissions for accessing models. For <strong>GET /v1/models</strong>, the API passes your Authorization header as-is to each model endpoint to determine which models to include; you can use your OpenShift token or an API key. For inference, use a token that your gateway accepts (e.g. OpenShift token or API key as configured).</p>
+<hr />
+<p><strong>Q: Do I need an API key to list available models?</strong></p>
+<p>A: No. Call <strong>GET /v1/models</strong> with your OpenShift/OIDC token (or any token your gateway accepts) in the Authorization header. The API uses that same header to probe each model endpoint and returns only models you can access.</p>
+<hr />
+<p><strong>Q: What is "token audience" and why does it matter?</strong></p>
+<p>A: Token audience identifies the intended recipient of a token. Some gateways expect tokens with a specific audience. For <strong>GET /v1/models</strong>, the API does not modify or exchange your token; it forwards your Authorization header as-is. Once token minting is in place, audience handling may be revisited.</p>
+<hr />
 <h2 id="related-documentation">Related Documentation</h2>
 <ul>
 <li><strong><a href="../tier-configuration/">Configuring Subscription Tiers</a></strong>: For operators - tier setup, RBAC, and rate limiting configuration</li>
@@ -1787,7 +2046,7 @@ are in the correct user group, which should be mapped to your desired tier in th
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="November 21, 2025 16:44:09 UTC">November 21, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 27, 2026 17:58:09 UTC">February 27, 2026</span>
   </span>
 
     
@@ -1852,10 +2111,10 @@ are in the correct user group, which should be mapped to your desired tier in th
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy", "content.code.annotate", "search.suggest", "search.boost", "navigation.instant"], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy", "content.code.annotate", "search.suggest", "search.boost", "navigation.instant"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>

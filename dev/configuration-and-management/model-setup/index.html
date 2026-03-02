@@ -11,17 +11,17 @@
         <link rel="canonical" href="https://opendatahub-io.github.io/models-as-a-service/dev/configuration-and-management/model-setup/">
       
       
-        <link rel="prev" href="../token-management/">
+        <link rel="prev" href="../tls-configuration/">
       
       
-        <link rel="next" href="../../advanced-administration/observability/">
+        <link rel="next" href="../model-listing-flow/">
       
       
         
       
       
       <link rel="icon" href="../../assets/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.3">
     
     
       
@@ -29,7 +29,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -609,69 +609,15 @@
   
   
   
-    
-    
-    
-    
-      
-      
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-          
-        
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_1_2" >
-        
-          
-          <label class="md-nav__link" for="__nav_4_1_2" id="__nav_4_1_2_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Operators
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_1_2">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Operators
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
     <li class="md-nav__item">
-      <a href="../../install/odh-setup/" class="md-nav__link">
+      <a href="../../install/platform-setup/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Open Data Hub
+    Operator Setup
   
 
     
@@ -680,42 +626,6 @@
   
 
       </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../install/rhoai-setup/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Red Hat OpenShift AI
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
     </li>
   
 
@@ -1019,6 +929,34 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tls-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    TLS Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1092,6 +1030,17 @@
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#how-the-model-list-is-built" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How the model list is built
+      
+    </span>
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#gateway-architecture" class="md-nav__link">
@@ -1319,6 +1268,62 @@
   
   
   
+    <li class="md-nav__item">
+      <a href="../model-listing-flow/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model Listing Flow
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../maas-model-kinds/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MaaSModel Kinds (future)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
     
     
     
@@ -1338,10 +1343,159 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_5" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_7" >
         
           
-          <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="">
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Known Issues
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Known Issues
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../group-membership-known-issues/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Group Membership
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tier-modification-known-issues/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tier Modification
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../model-access-behavior/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model Access
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_8" id="__nav_4_8_label" tabindex="">
             
   
   
@@ -1359,8 +1513,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_5">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_8">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -1413,6 +1567,34 @@
     
   
     Limitador Persistence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../advanced-administration/storage-configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Storage Configuration
   
 
     
@@ -1555,6 +1737,17 @@
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#how-the-model-list-is-built" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How the model list is built
+      
+    </span>
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#gateway-architecture" class="md-nav__link">
@@ -1788,7 +1981,14 @@
 
 
 <h1 id="model-setup-guide">Model Setup Guide</h1>
-<p>This guide explains how to configure <code>LLMInferenceService</code> resources to be picked up by the MaaS platform for authentication, rate limiting, and token-based consumption tracking.</p>
+<p>This guide explains how to configure models so they appear in the MaaS platform and are subject to authentication, rate limiting, and token-based consumption tracking.</p>
+<h2 id="how-the-model-list-is-built">How the model list is built</h2>
+<p>The <strong>GET /v1/models</strong> endpoint (and thus "which models are available") can be built in two ways:</p>
+<ol>
+<li><strong>MaaSModel (recommended when using the MaaS controller)</strong><br />
+   When the <a href="https://github.com/opendatahub-io/models-as-a-service/tree/main/maas-controller">MaaS controller</a> is installed, you register models by creating <strong>MaaSModel</strong> CRs that reference an LLMInferenceService. The controller reconciles each MaaSModel and sets <code>status.endpoint</code> and <code>status.phase</code>. The MaaS API lists these MaaSModel CRs and returns them as the model list. Access and quotas are controlled by <strong>MaaSAuthPolicy</strong> and <strong>MaaSSubscription</strong>. See <a href="../model-listing-flow/">Model listing flow</a> for details.</li>
+</ol>
+<p>Model listing is from MaaSModel CRs (cached via informer). The sections below focus on <strong>LLMInferenceService</strong> configuration (gateway reference, tier annotation) for use as the backend referenced by MaaSModel.</p>
 <h2 id="gateway-architecture">Gateway Architecture</h2>
 <p>The MaaS platform uses a <strong>segregated gateway approach</strong>, where models explicitly opt-in to MaaS capabilities by referencing the <code>maas-default-gateway</code>. This provides flexibility and isolation between different model deployment scenarios.</p>
 <pre class="mermaid"><code>%%{init: {'theme':'base', 'themeVariables': { 'fontSize':'16px', 'fontFamily':'system-ui, -apple-system, sans-serif', 'edgeLabelBackground':'transparent', 'labelBackground':'transparent', 'tertiaryColor':'transparent'}}}%%
@@ -1823,11 +2023,13 @@ graph TB
 <p>The <code>maas-default-gateway</code> is created automatically during MaaS platform installation. You don't need to create it manually.</p>
 </div>
 <h3 id="benefits">Benefits</h3>
-<p>. <strong>Flexibility</strong>: Different models can have different security and access requirements
-. <strong>Progressive Adoption</strong>: Teams can adopt MaaS features incrementally
-. <strong>Production Control</strong>: Production models get full policy enforcement if needed
-. <strong>Multi-Tenancy</strong>: Different teams can use different gateways in the same cluster
-. <strong>Blast Radius Containment</strong>: Issues with one gateway don't affect the other</p>
+<ul>
+<li><strong>Flexibility</strong>: Different models can have different security and access requirements</li>
+<li><strong>Progressive Adoption</strong>: Teams can adopt MaaS features incrementally</li>
+<li><strong>Production Control</strong>: Production models get full policy enforcement if needed</li>
+<li><strong>Multi-Tenancy</strong>: Different teams can use different gateways in the same cluster</li>
+<li><strong>Blast Radius Containment</strong>: Issues with one gateway don't affect the other</li>
+</ul>
 <h2 id="prerequisites">Prerequisites</h2>
 <p>Before configuring a model for MaaS, ensure you have:</p>
 <ul>
@@ -2005,10 +2207,15 @@ graph TB
 <li>Check that RBAC was properly created for your tier</li>
 <li>Verify the service account in your token has the correct tier namespace</li>
 </ul>
+<div class="admonition warning">
+<p class="admonition-title">Removing Models from Tiers During Active Usage</p>
+<p>When updating the <code>alpha.maas.opendatahub.io/tiers</code> annotation to remove a tier, be aware that active requests may be affected. See <a href="../model-access-behavior/#model-tier-access-changes-during-active-usage">Model Tier Access Behavior</a> for details on expected behaviors and recommended practices.</p>
+</div>
 <h2 id="references">References</h2>
 <ul>
 <li><a href="../tier-overview/">Tier Management</a> - Learn about configuring tier access</li>
 <li><a href="../tier-configuration/">Tier Configuration</a> - Detailed tier setup instructions</li>
+<li><a href="../model-access-behavior/">Model Tier Access Behavior</a> - Expected behaviors and operational considerations</li>
 <li><a href="../../architecture/">Architecture Overview</a> - Understand the overall MaaS architecture</li>
 <li><a href="https://kserve.github.io/website/">KServe LLMInferenceService Documentation</a> - Official KServe documentation</li>
 </ul>
@@ -2034,7 +2241,7 @@ graph TB
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="December 15, 2025 14:41:35 UTC">December 15, 2025</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="February 27, 2026 17:58:09 UTC">February 27, 2026</span>
   </span>
 
     
@@ -2099,10 +2306,10 @@ graph TB
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy", "content.code.annotate", "search.suggest", "search.boost", "navigation.instant"], "search": "../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.tabs", "navigation.sections", "navigation.expand", "navigation.top", "search.highlight", "search.share", "content.code.copy", "content.code.annotate", "search.suggest", "search.boost", "navigation.instant"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"default": "latest", "provider": "mike"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>
