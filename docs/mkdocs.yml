@@ -74,6 +74,8 @@ nav:
       - Model Setup: install/model-setup.md
       - External Model Setup (Tech Preview): install/external-model-setup.md
       - Validation: install/validation.md
+      - Multi-Tenant Setup: install/multi-tenant-setup.md
+      - Multi-Tenant Validation: install/multi-tenant-validation.md
       - Troubleshooting: install/troubleshooting.md
   - Administration Guide:
     - Configuration & Management:
