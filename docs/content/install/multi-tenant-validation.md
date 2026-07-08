@@ -38,8 +38,8 @@ Expected: `status.phase` is `Active`.
 ## 3. Verify maas-api Deployment
 
 ```bash
-APP_NS=$(oc get dsci -o jsonpath='{.items[0].spec.applicationsNamespace}' 2>/dev/null || echo "redhat-ods-applications")
-oc get deployment maas-api-${TENANT_NAME} -n ${APP_NS}
+INFRA_NS=$(oc get deployment -A -o custom-columns=NS:.metadata.namespace,NAME:.metadata.name --no-headers | grep "maas-api-${TENANT_NAME}" | awk '{print $1}')
+oc get deployment maas-api-${TENANT_NAME} -n ${INFRA_NS}
 ```
 
 Expected: `READY` is `1/1`.
@@ -61,7 +61,7 @@ oc get route ${TENANT_NAME}-gateway -n openshift-ingress
 ## 5. Verify Policies
 
 ```bash
-oc get authpolicy -n openshift-ingress -l maas.opendatahub.io/tenant-name=${TENANT_NAME}
+oc get authpolicy ${TENANT_NAME}-maas-auth -n openshift-ingress
 oc get tokenratelimitpolicy -n ${TENANT_NS}
 ```
 
@@ -126,13 +126,13 @@ echo "=== Tenant CR ==="
 oc get tenant default-tenant -n ${TENANT_NS}
 
 echo "=== maas-api ==="
-oc get deployment maas-api-${TENANT_NAME} -n ${APP_NS}
+oc get deployment maas-api-${TENANT_NAME} -n ${INFRA_NS}
 
 echo "=== Gateway ==="
 oc get gateway ${TENANT_NAME} -n openshift-ingress
 
 echo "=== AuthPolicies ==="
-oc get authpolicy -A -l maas.opendatahub.io/tenant-name=${TENANT_NAME}
+oc get authpolicy ${TENANT_NAME}-maas-auth -n openshift-ingress
 
 echo "=== Subscriptions ==="
 oc get maassubscription -n ${TENANT_NS}

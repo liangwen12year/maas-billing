@@ -126,7 +126,7 @@ The controller bootstraps the following resources:
 |----------|----------|------|
 | Namespace | Cluster | `ai-tenant-${TENANT_NAME}` |
 | Tenant CR | `ai-tenant-${TENANT_NAME}` | `default-tenant` |
-| maas-api Deployment | Operator namespace | `maas-api-${TENANT_NAME}` |
+| maas-api Deployment | Infrastructure namespace | `maas-api-${TENANT_NAME}` |
 | AuthPolicy | Gateway namespace | `${TENANT_NAME}-maas-auth` |
 | tenant-admin Role | `ai-tenant-${TENANT_NAME}` | `aitenant-${TENANT_NAME}-tenant-admin` |
 | object-admin Role | `ai-tenants` | `aitenant-${TENANT_NAME}-object-admin` |
@@ -166,10 +166,11 @@ Verify the Tenant CR exists:
 oc get tenant default-tenant -n ai-tenant-${TENANT_NAME}
 ```
 
-Verify the maas-api deployment is running:
+Verify the maas-api deployment is running in the infrastructure namespace:
 
 ```bash
-oc get deployment maas-api-${TENANT_NAME} -n $(oc get dsci -o jsonpath='{.items[0].spec.applicationsNamespace}')
+INFRA_NS=$(oc get deployment -A -o custom-columns=NS:.metadata.namespace,NAME:.metadata.name --no-headers | grep "maas-api-${TENANT_NAME}" | awk '{print $1}')
+oc get deployment maas-api-${TENANT_NAME} -n ${INFRA_NS}
 ```
 
 ## 4. Grant Tenant-Admin Access
