@@ -62,6 +62,7 @@ nav:
     - Personas: concepts/personas.md
     - Access and Quota Overview: concepts/subscription-overview.md
     - Model Reference: concepts/model-reference.md
+    - Authentication Modes: concepts/auth-modes.md
     - API Key Authentication: concepts/api-key-authentication.md
     - Model Access Control: concepts/model-access-control.md
   - Install:
