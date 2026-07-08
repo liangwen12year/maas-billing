@@ -37,14 +37,16 @@ User → External IdP (Keycloak / Entra ID) → JWT token
 
 **What the admin configures:**
 
+For AITenant-managed tenants (including the default tenant), configure OIDC on the AITenant CR:
+
 ```yaml
 apiVersion: maas.opendatahub.io/v1alpha1
-kind: Tenant
+kind: AITenant
 metadata:
-  name: default-tenant
-  namespace: models-as-a-service
+  name: models-as-a-service
+  namespace: ai-tenants
 spec:
-  externalOIDC:
+  oidc:
     issuerUrl: "https://keycloak.example.com/realms/maas"
     clientId: maas-api
     ttl: 300
@@ -56,18 +58,18 @@ spec:
 | `clientId` | OAuth2 client ID. Tokens must have `azp` claim matching this value. |
 | `ttl` | JWKS cache duration in seconds (default: 300, minimum: 30). |
 
-For AITenant-managed tenants, configure OIDC on the AITenant CR instead:
+For unmanaged tenants (not backed by an AITenant), configure OIDC on the Tenant CR directly:
 
 ```yaml
 apiVersion: maas.opendatahub.io/v1alpha1
-kind: AITenant
+kind: Tenant
 metadata:
-  name: red-team
-  namespace: ai-tenants
+  name: default-tenant
+  namespace: models-as-a-service
 spec:
-  oidc:
-    issuerUrl: "https://keycloak.example.com/realms/red-team"
-    clientId: red-team-client
+  externalOIDC:
+    issuerUrl: "https://keycloak.example.com/realms/maas"
+    clientId: maas-api
     ttl: 300
 ```
 
@@ -104,9 +106,9 @@ For Mode 2 (standalone OIDC), the IdP must:
 
 MaaS does **not** perform OAuth2 client authentication (no `client_secret`). It validates bearer tokens only. Client authentication and secret management are the IdP's responsibility.
 
-## Field Alignment Between Modes
+## Field Alignment (Tenant vs AITenant)
 
-Per refinement consensus, configuration fields align between Tenant CR and AITenant CR:
+Configuration fields align between Tenant CR and AITenant CR:
 
 | Field | Tenant CR path | AITenant CR path | Semantics |
 |-------|---------------|-------------------|-----------|
