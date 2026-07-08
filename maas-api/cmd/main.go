@@ -226,12 +226,10 @@ func registerHandlers(
 		return fmt.Errorf("failed to resolve gateway internal address: %w", err)
 	}
 	if gatewayInternalHost == "" {
-		log.Warn("No gateway service found - model access checks will be disabled",
-			"gateway", cfg.GatewayName,
-			"namespace", cfg.GatewayNamespace)
-	} else {
-		log.Info("Resolved gateway internal host for access probes", "host", gatewayInternalHost)
+		return fmt.Errorf("gateway service not found for %s/%s: model access probes require a resolvable gateway internal host",
+			cfg.GatewayNamespace, cfg.GatewayName)
 	}
+	log.Info("Resolved gateway internal host for access probes", "host", gatewayInternalHost)
 
 	modelManager, err := models.NewManager(log, cfg.AccessCheckTimeoutSeconds, gatewayInternalHost)
 	if err != nil {
