@@ -31,7 +31,7 @@ func TestBodyLimit_AcceptsSmallBody(t *testing.T) {
 	router.ServeHTTP(w, req)
 
 	assert.Equal(t, http.StatusOK, w.Code)
-	assert.Equal(t, `{"name":"test"}`, w.Body.String())
+	assert.JSONEq(t, `{"name":"test"}`, w.Body.String())
 }
 
 func TestBodyLimit_RejectsOversizedBody(t *testing.T) {
