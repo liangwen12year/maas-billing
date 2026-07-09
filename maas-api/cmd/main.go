@@ -98,6 +98,7 @@ func serve() error {
 
 	// Recovery must be first to catch panics from subsequent middleware
 	router.Use(gin.Recovery())
+	router.Use(middleware.BodyLimit())
 	accessLogCfg := middleware.TenantLoggerConfig{
 		DefaultTenant:   cfg.TenantName,
 		TenantNamespace: cfg.MaaSSubscriptionNamespace,
