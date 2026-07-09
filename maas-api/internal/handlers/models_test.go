@@ -610,25 +610,31 @@ func TestListingModelsWithSubscriptionHeader(t *testing.T) {
 		assert.True(t, modelIDs["free-model"], "Should include free model")
 	})
 
-	// Table-driven tests for API key subscription error scenarios
-	subscriptionErrorTests := []struct {
-		name         string
-		subscription string
-		userGroups   string
+	// FIND-009: X-MaaS-Subscription header is ignored for user token requests.
+	// When a user token (not Bearer sk-oai-...) includes a subscription header,
+	// the header is discarded and the request returns all accessible models.
+	// This prevents OC-token callers from probing subscription existence.
+	subscriptionIgnoredTests := []struct {
+		name               string
+		subscription       string
+		userGroups         string
+		expectedModelCount int
 	}{
 		{
-			name:         "API key - unknown subscription - returns 403",
-			subscription: "nonexistent-subscription",
-			userGroups:   `["free-users"]`,
+			name:               "user token - unknown subscription header ignored - returns accessible models",
+			subscription:       "nonexistent-subscription",
+			userGroups:         `["free-users"]`,
+			expectedModelCount: 1,
 		},
 		{
-			name:         "API key - no access to subscription - returns 403",
-			subscription: "premium",
-			userGroups:   `["free-users"]`,
+			name:               "user token - inaccessible subscription header ignored - returns accessible models",
+			subscription:       "premium",
+			userGroups:         `["free-users"]`,
+			expectedModelCount: 1,
 		},
 	}
 
-	for _, tt := range subscriptionErrorTests {
+	for _, tt := range subscriptionIgnoredTests {
 		t.Run(tt.name, func(t *testing.T) {
 			w := httptest.NewRecorder()
 			req, err := http.NewRequestWithContext(t.Context(), http.MethodGet, "/v1/models", nil)
@@ -640,15 +646,13 @@ func TestListingModelsWithSubscriptionHeader(t *testing.T) {
 			req.Header.Set(constant.HeaderGroup, tt.userGroups)
 			router.ServeHTTP(w, req)
 
-			require.Equal(t, http.StatusForbidden, w.Code, "Expected 403 Forbidden")
+			require.Equal(t, http.StatusOK, w.Code, "Expected 200 OK — subscription header ignored for user tokens")
 
-			var errorResponse map[string]any
-			err = json.Unmarshal(w.Body.Bytes(), &errorResponse)
-			require.NoError(t, err, "Failed to unmarshal error response")
+			var response pagination.Page[models.Model]
+			err = json.Unmarshal(w.Body.Bytes(), &response)
+			require.NoError(t, err, "Failed to unmarshal response body")
 
-			errorObj, ok := errorResponse["error"].(map[string]any)
-			require.True(t, ok, "Expected error object")
-			assert.Equal(t, "permission_error", errorObj["type"])
+			require.Len(t, response.Data, tt.expectedModelCount, "Expected accessible models only")
 		})
 	}
 }
