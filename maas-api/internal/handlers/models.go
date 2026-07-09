@@ -185,17 +185,24 @@ func (h *ModelsHandler) extractAndValidateAuth(c *gin.Context) (string, string, 
 		return "", "", false, errors.New("missing authorization")
 	}
 
-	// Extract x-maas-subscription header.
+	isAPIKeyRequest := strings.HasPrefix(authHeader, "Bearer sk-oai-")
+
+	// Extract x-maas-subscription header ONLY for API key requests.
+	// For OpenShift token callers, Authorino does not set this header, so any
+	// client-supplied value would be untrusted. Ignoring it prevents callers
+	// from probing subscription existence or bypassing the "return all
+	// accessible models" intent. (CWE-639 / FIND-009)
 	requestedSubscription := ""
-	headerValues := c.Request.Header.Values("X-Maas-Subscription")
-	for i := len(headerValues) - 1; i >= 0; i-- {
-		trimmed := strings.TrimSpace(headerValues[i])
-		if trimmed != "" {
-			requestedSubscription = trimmed
-			break
+	if isAPIKeyRequest {
+		headerValues := c.Request.Header.Values("X-Maas-Subscription")
+		for i := len(headerValues) - 1; i >= 0; i-- {
+			trimmed := strings.TrimSpace(headerValues[i])
+			if trimmed != "" {
+				requestedSubscription = trimmed
+				break
+			}
 		}
 	}
-	isAPIKeyRequest := strings.HasPrefix(authHeader, "Bearer sk-oai-")
 
 	// Fail closed: API keys without a bound subscription must be rejected
 	if isAPIKeyRequest && requestedSubscription == "" {
