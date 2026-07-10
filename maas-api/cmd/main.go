@@ -287,7 +287,7 @@ func registerHandlers(
 // http://127.0.0.1 address, used by the debug-mode CORS policy to restrict
 // cross-origin access to local development only.
 // Only plain HTTP is accepted — local dev servers do not use HTTPS.
-// (CWE-942 / FIND-Debug-CORS)
+// (CWE-942 / FIND-Debug-CORS.)
 func isLocalhostOrigin(origin string) bool {
 	u, err := url.Parse(origin)
 	if err != nil {
