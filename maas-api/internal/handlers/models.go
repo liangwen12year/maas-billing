@@ -122,21 +122,13 @@ func (h *ModelsHandler) handleSubscriptionSelectionError(c *gin.Context, err err
 		return
 	}
 
-	if errors.As(err, &accessDeniedErr) {
-		h.logger.Debug("Access denied to subscription")
+	// Unify "access denied" and "not found" responses to prevent callers from
+	// probing whether a subscription exists. (CWE-639 / FIND-009)
+	if errors.As(err, &accessDeniedErr) || errors.As(err, &notFoundErr) {
+		h.logger.Debug("Subscription access denied or not found")
 		c.JSON(http.StatusForbidden, gin.H{
 			"error": gin.H{
-				"message": err.Error(),
-				"type":    "permission_error",
-			}})
-		return
-	}
-
-	if errors.As(err, &notFoundErr) {
-		h.logger.Debug("Subscription not found")
-		c.JSON(http.StatusForbidden, gin.H{
-			"error": gin.H{
-				"message": err.Error(),
+				"message": "access denied to requested subscription",
 				"type":    "permission_error",
 			}})
 		return
@@ -187,20 +179,13 @@ func (h *ModelsHandler) extractAndValidateAuth(c *gin.Context) (string, string, 
 
 	isAPIKeyRequest := strings.HasPrefix(authHeader, "Bearer sk-oai-")
 
-	// Extract x-maas-subscription header ONLY for API key requests.
-	// For OpenShift token callers, Authorino does not set this header, so any
-	// client-supplied value would be untrusted. Ignoring it prevents callers
-	// from probing subscription existence or bypassing the "return all
-	// accessible models" intent. (CWE-639 / FIND-009)
 	requestedSubscription := ""
-	if isAPIKeyRequest {
-		headerValues := c.Request.Header.Values("X-Maas-Subscription")
-		for i := len(headerValues) - 1; i >= 0; i-- {
-			trimmed := strings.TrimSpace(headerValues[i])
-			if trimmed != "" {
-				requestedSubscription = trimmed
-				break
-			}
+	headerValues := c.Request.Header.Values("X-Maas-Subscription")
+	for i := len(headerValues) - 1; i >= 0; i-- {
+		trimmed := strings.TrimSpace(headerValues[i])
+		if trimmed != "" {
+			requestedSubscription = trimmed
+			break
 		}
 	}
 
