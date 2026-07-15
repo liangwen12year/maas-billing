@@ -554,13 +554,13 @@ func markDefaultAITenantBootstrapped(ctx context.Context, c client.Client, ct *m
 // owner references; LifecycleReconciler links Config to the default AITenant,
 // Deployment, and default Tenant. It does not create while the maas-controller
 // Deployment is terminating, so bootstrap does not fight teardown.
+//
+// Uses an informer watch on Config CRs so bootstrap triggers immediately when
+// Config/default is created, instead of polling on a fixed interval.
 func ensureClusterBootstrapRunnable(mgr ctrl.Manager, tenantNamespace, aitenantNamespace, controllerDeploymentNS, controllerDeploymentName, gatewayName, gatewayNamespace string) manager.RunnableFunc {
 	return func(ctx context.Context) error {
 		log := ctrl.Log.WithName("setup").WithName("ensureClusterBootstrap")
 		c := mgr.GetClient()
-
-		ticker := time.NewTicker(5 * time.Second)
-		defer ticker.Stop()
 
 		ensure := func() {
 			created, err := ensureDefaultAITenantBootstrap(ctx, c, tenantNamespace, aitenantNamespace, controllerDeploymentNS, controllerDeploymentName, gatewayName, gatewayNamespace)
@@ -578,17 +578,85 @@ func ensureClusterBootstrapRunnable(mgr ctrl.Manager, tenantNamespace, aitenantN
 			}
 		}
 
+		// Try immediately in case Config/default already exists.
 		ensure()
+
+		// Watch Config CRs via the manager's informer cache. When
+		// Config/default is created or updated, the handler sends on the
+		// channel and the bootstrap runs without delay.
+		trigger := make(chan struct{}, 1)
+		informer, err := mgr.GetCache().GetInformer(ctx, &maasv1alpha1.Config{})
+		if err != nil {
+			log.Error(err, "failed to get Config informer, falling back to polling")
+			return runBootstrapPollLoop(ctx, ensure)
+		}
+
+		handler := configEventHandler{name: maasv1alpha1.ConfigInstanceName, ch: trigger}
+		reg, err := informer.AddEventHandler(handler)
+		if err != nil {
+			log.Error(err, "failed to add Config event handler, falling back to polling")
+			return runBootstrapPollLoop(ctx, ensure)
+		}
+		defer informer.RemoveEventHandler(reg) //nolint:errcheck
+
+		// Keep a slow fallback ticker as a safety net (e.g. if the
+		// informer misses an event after a re-list).
+		fallback := time.NewTicker(60 * time.Second)
+		defer fallback.Stop()
+
 		for {
 			select {
 			case <-ctx.Done():
 				return nil
-			case <-ticker.C:
+			case <-trigger:
+				ensure()
+			case <-fallback.C:
 				ensure()
 			}
 		}
 	}
 }
+
+// runBootstrapPollLoop is the fallback when the Config informer is unavailable
+// (e.g. CRD not yet registered). Polls every 5 seconds.
+func runBootstrapPollLoop(ctx context.Context, ensure func()) error {
+	ticker := time.NewTicker(5 * time.Second)
+	defer ticker.Stop()
+	for {
+		select {
+		case <-ctx.Done():
+			return nil
+		case <-ticker.C:
+			ensure()
+		}
+	}
+}
+
+// configEventHandler sends on ch when a Config CR with the given name is created or updated.
+type configEventHandler struct {
+	name string
+	ch   chan<- struct{}
+}
+
+func (h configEventHandler) OnAdd(obj interface{}, _ bool) {
+	if m, ok := obj.(metav1.ObjectMetaAccessor); ok && m.GetObjectMeta().GetName() == h.name {
+		select {
+		case h.ch <- struct{}{}:
+		default:
+		}
+	}
+}
+
+func (h configEventHandler) OnUpdate(_, newObj interface{}) {
+	if m, ok := newObj.(metav1.ObjectMetaAccessor); ok && m.GetObjectMeta().GetName() == h.name {
+		select {
+		case h.ch <- struct{}{}:
+		default:
+		}
+	}
+}
+
+func (h configEventHandler) OnDelete(_ interface{}) {}
 
 // resolveInfraNamespace determines the infrastructure namespace for maas-api and maas-db-config.
 // Note: PostgreSQL itself can be external (e.g., AWS RDS) - only maas-api and the connection secret deploy here.
