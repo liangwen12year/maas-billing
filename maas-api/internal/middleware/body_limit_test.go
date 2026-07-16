@@ -46,8 +46,10 @@ func TestBodyLimit_RejectsOversizedBody(t *testing.T) {
 		c.Status(http.StatusOK)
 	})
 
-	// 2 MiB body exceeds the 1 MiB limit
-	oversized := strings.Repeat("A", 2<<20)
+	// Valid JSON whose content exceeds the 1 MiB limit, forcing the JSON
+	// decoder to read past MaxBytesReader's threshold and trigger
+	// *http.MaxBytesError (not just a JSON syntax error).
+	oversized := `{"data":"` + strings.Repeat("A", 2<<20) + `"}`
 	w := httptest.NewRecorder()
 	req := httptest.NewRequest(http.MethodPost, "/test", strings.NewReader(oversized))
 	req.Header.Set("Content-Type", "application/json")
