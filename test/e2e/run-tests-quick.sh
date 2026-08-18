@@ -53,8 +53,13 @@ echo "  DEPLOYMENT_NAMESPACE: ${DEPLOYMENT_NAMESPACE}"
 echo "  MAAS_SUBSCRIPTION_NAMESPACE: ${MAAS_SUBSCRIPTION_NAMESPACE}"
 echo "  MAAS_API_BASE_URL: ${MAAS_API_BASE_URL}"
 echo "  TOKEN: ${TOKEN:0:20}..."
-if [[ "${E2E_PARALLEL_WORKERS:-7}" -gt 1 ]]; then
-    echo "  E2E_PARALLEL_WORKERS: ${E2E_PARALLEL_WORKERS:-7}"
+E2E_PARALLEL_WORKERS="${E2E_PARALLEL_WORKERS:-7}"
+if ! [[ "$E2E_PARALLEL_WORKERS" =~ ^[0-9]+$ ]]; then
+    echo "ERROR: E2E_PARALLEL_WORKERS must be a positive integer, got '$E2E_PARALLEL_WORKERS'" >&2
+    exit 1
+fi
+if [[ "$E2E_PARALLEL_WORKERS" -gt 1 ]]; then
+    echo "  E2E_PARALLEL_WORKERS: ${E2E_PARALLEL_WORKERS}"
 fi
 echo ""
 echo "Running tests..."
