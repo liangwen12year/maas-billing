@@ -16,7 +16,7 @@ Existing cluster (skip deploy):
 SKIP_DEPLOYMENT=true ./test/e2e/scripts/prow_run_smoke_test.sh
 ```
 
-Parallel pytest on an existing cluster (default 4 workers):
+Parallel pytest on an existing cluster (default 7 workers):
 
 ```bash
 SKIP_DEPLOYMENT=true ./test/e2e/run-tests-quick.sh
