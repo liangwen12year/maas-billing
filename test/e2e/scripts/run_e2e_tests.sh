@@ -54,8 +54,8 @@ done
 # ── Defaults ─────────────────────────────────────────────────────────────
 export E2E_RECONCILE_WAIT="${E2E_RECONCILE_WAIT:-4}"
 E2E_PARALLEL_WORKERS="${E2E_PARALLEL_WORKERS:-7}"
-if ! [[ "$E2E_PARALLEL_WORKERS" =~ ^[0-9]+$ ]]; then
-    echo "ERROR: E2E_PARALLEL_WORKERS must be a positive integer, got '$E2E_PARALLEL_WORKERS'" >&2
+if ! [[ "$E2E_PARALLEL_WORKERS" =~ ^[1-9][0-9]*$ ]]; then
+    echo "ERROR: E2E_PARALLEL_WORKERS must be a positive integer (>= 1), got '$E2E_PARALLEL_WORKERS'" >&2
     exit 1
 fi
 

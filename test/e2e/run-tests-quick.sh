@@ -53,9 +53,9 @@ echo "  DEPLOYMENT_NAMESPACE: ${DEPLOYMENT_NAMESPACE}"
 echo "  MAAS_SUBSCRIPTION_NAMESPACE: ${MAAS_SUBSCRIPTION_NAMESPACE}"
 echo "  MAAS_API_BASE_URL: ${MAAS_API_BASE_URL}"
 echo "  TOKEN: ${TOKEN:0:20}..."
-E2E_PARALLEL_WORKERS="${E2E_PARALLEL_WORKERS:-7}"
-if ! [[ "$E2E_PARALLEL_WORKERS" =~ ^[0-9]+$ ]]; then
-    echo "ERROR: E2E_PARALLEL_WORKERS must be a positive integer, got '$E2E_PARALLEL_WORKERS'" >&2
+export E2E_PARALLEL_WORKERS="${E2E_PARALLEL_WORKERS:-7}"
+if ! [[ "$E2E_PARALLEL_WORKERS" =~ ^[1-9][0-9]*$ ]]; then
+    echo "ERROR: E2E_PARALLEL_WORKERS must be a positive integer (>= 1), got '$E2E_PARALLEL_WORKERS'" >&2
     exit 1
 fi
 if [[ "$E2E_PARALLEL_WORKERS" -gt 1 ]]; then
@@ -66,6 +66,5 @@ echo "Running tests..."
 echo ""
 
 # Delegate to the shared test runner (same script CI uses).
-export E2E_PARALLEL_WORKERS="${E2E_PARALLEL_WORKERS:-7}"
 export ARTIFACTS_DIR="${ARTIFACTS_DIR:-$PROJECT_ROOT/test/e2e/reports}"
 exec "$PROJECT_ROOT/test/e2e/scripts/run_e2e_tests.sh" "$@"

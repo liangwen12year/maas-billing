@@ -718,21 +718,6 @@ run_e2e_tests() {
     # TOKEN and ADMIN_OC_TOKEN are already exported by setup_test_tokens()
 
     local test_dir="$PROJECT_ROOT/test/e2e"
-    # Use ARTIFACTS_DIR so pytest reports go to Prow artifact collection (ARTIFACT_DIR)
-    mkdir -p "$ARTIFACTS_DIR"
-
-    if [[ ! -d "$test_dir/.venv" ]]; then
-        echo "Creating Python venv for e2e tests..."
-        python3 -m venv "$test_dir/.venv" --upgrade-deps
-    fi
-    source "$test_dir/.venv/bin/activate"
-    python -m pip install --upgrade pip --quiet
-    python -m pip install -r "$test_dir/requirements.txt" --quiet
-
-    local user
-    user="$(oc whoami 2>/dev/null || echo 'unknown')"
-    local html="$ARTIFACTS_DIR/e2e-${user}.html"
-    local xml="$ARTIFACTS_DIR/e2e-${user}.xml"
 
     echo "Running e2e tests with:"
     echo "  - TOKEN: $(echo "${TOKEN:-not set}" | cut -c1-20)..."
