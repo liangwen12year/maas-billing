@@ -81,11 +81,7 @@ export POLICY_ENGINE="${POLICY_ENGINE:-rhcl}"
 export RHCL_NAMESPACE="${RHCL_NAMESPACE:-kuadrant-system}"
 export RHCL_STARTING_CSV="${RHCL_STARTING_CSV:-}"
 
-if [[ "${SKIP_DEPLOYMENT:-false}" == "true" ]]; then
-    AUTHORINO_NAMESPACE="$(resolve_authorino_namespace)"
-else
-    AUTHORINO_NAMESPACE="$(resolve_authorino_namespace "$POLICY_ENGINE")"
-fi
+AUTHORINO_NAMESPACE="${AUTHORINO_NAMESPACE:-$(resolve_authorino_namespace "$POLICY_ENGINE")}"
 export AUTHORINO_NAMESPACE
 
 DEPLOYMENT_NAMESPACE="${DEPLOYMENT_NAMESPACE:-opendatahub}"

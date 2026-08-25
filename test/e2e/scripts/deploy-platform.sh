@@ -92,7 +92,7 @@ deploy_maas_platform() {
         if [[ -n "$ingress_cert_name" ]]; then
             local ca_tmp
             ca_tmp=$(mktemp)
-            trap "rm -f '$ca_tmp'; trap - RETURN" RETURN
+            trap 'rm -f -- "$ca_tmp"; trap - RETURN' RETURN
             if oc get secret "$ingress_cert_name" -n openshift-ingress -o jsonpath='{.data.tls\.crt}' | base64 -d > "$ca_tmp" 2>/dev/null && [[ -s "$ca_tmp" ]]; then
                 kubectl create configmap authorino-oidc-ca -n "$AUTHORINO_NAMESPACE" \
                     --from-file=ca.crt="$ca_tmp" --dry-run=client -o yaml | kubectl apply -f -
