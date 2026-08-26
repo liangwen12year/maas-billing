@@ -7,8 +7,13 @@ rules:
   - apiGroups: [""]
     resources: ["configmaps"]
     verbs: ["get", "list", "watch"]
-  # Secrets access is scoped per-namespace via operator-rbac-toolkit scoper
-  # (see payload-processing-secrets-reader ClusterRole + maas-controller scoper setup).
+  # apikey-injection plugin: controller-runtime informer cache requires cluster-scoped
+  # list+watch. Per-namespace RoleBindings alone are insufficient because the cache
+  # does LIST /api/v1/secrets (cluster-scope), not per-namespace. Scoping requires
+  # MultiNamespacedCacheBuilder in the payload-processing binary (future work).
+  - apiGroups: [""]
+    resources: ["secrets"]
+    verbs: ["get", "list", "watch"]
   # legacy-migration + model-provider-resolver: watches legacy maas ExternalModels
   - apiGroups: ["maas.opendatahub.io"]
     resources: ["externalmodels"]

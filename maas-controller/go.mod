@@ -6,7 +6,6 @@ require (
 	github.com/go-logr/logr v1.4.3
 	github.com/kserve/kserve v0.19.0-rc0.0.20260715171408-85065ab905e4
 	github.com/onsi/gomega v1.41.0
-	github.com/opendatahub-io/operator-rbac-toolkit v0.1.0
 	github.com/openshift/api v0.0.0-20260317165824-54a3998d81eb
 	github.com/openshift/controller-runtime-common v0.0.0-20260428152732-64ee174f5e2e
 	github.com/stretchr/testify v1.11.1
