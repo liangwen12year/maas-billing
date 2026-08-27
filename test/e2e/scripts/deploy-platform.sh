@@ -130,7 +130,8 @@ deploy_maas_platform() {
     else
         echo "Waiting for Authorino and auth service to be ready (namespace: ${AUTHORINO_NAMESPACE})..."
         if ! wait_authorino_ready "$AUTHORINO_NAMESPACE" "$AUTHORINO_TIMEOUT"; then
-            echo "⚠️  WARNING: Authorino readiness check had issues (timeout: ${AUTHORINO_TIMEOUT}s), continuing anyway"
+            echo "❌ ERROR: Authorino did not become ready (timeout: ${AUTHORINO_TIMEOUT}s)"
+            exit 1
         fi
     fi
 

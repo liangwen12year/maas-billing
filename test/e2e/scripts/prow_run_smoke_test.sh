@@ -204,8 +204,14 @@ validate_deployment() {
 
     if [[ "$SKIP_VALIDATION" == "false" ]]; then
         if ! "$PROJECT_ROOT/scripts/validate-deployment.sh"; then
-            echo "⚠️  First validation attempt failed, waiting 30 seconds and retrying..."
-            sleep 30
+            echo "⚠️  First validation attempt failed; polling gateway and core deployments then retrying..."
+            wait_for_gateway_programmed "$GATEWAY_NAME" "$GATEWAY_NAMESPACE" 60 || true
+            kubectl wait --for=condition=Available --timeout=60s \
+                "deployment/maas-controller" -n "$DEPLOYMENT_NAMESPACE" 2>/dev/null || true
+            if [[ -n "${MAAS_API_DEPLOYMENT_NAMESPACE:-}" ]]; then
+                kubectl wait --for=condition=Available --timeout=60s \
+                    "deployment/maas-api" -n "$MAAS_API_DEPLOYMENT_NAMESPACE" 2>/dev/null || true
+            fi
             if ! "$PROJECT_ROOT/scripts/validate-deployment.sh"; then
                 echo "❌ ERROR: Deployment validation failed after retry"
                 exit 1

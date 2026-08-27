@@ -70,8 +70,9 @@ wait_for_auth_policies_enforced() {
         echo "  Waiting... ($total policies found, not all enforced yet)"
         sleep 10
     done
-    echo "⚠️  WARNING: AuthPolicies not all enforced after ${timeout}s, tests may fail"
+    echo "❌ ERROR: AuthPolicies not all enforced after ${timeout}s"
     oc get authpolicies -A -o wide 2>/dev/null || true
+    return 1
 }
 
 deploy_models() {
@@ -146,7 +147,9 @@ deploy_models() {
         exit 1
     fi
 
-    wait_for_auth_policies_enforced
+    if ! wait_for_auth_policies_enforced; then
+        exit 1
+    fi
 }
 
 deploy_models
