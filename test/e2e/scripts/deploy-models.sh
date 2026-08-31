@@ -24,24 +24,6 @@ DEPLOYMENT_NAMESPACE="${DEPLOYMENT_NAMESPACE:-opendatahub}"
 MAAS_SUBSCRIPTION_NAMESPACE="${MAAS_SUBSCRIPTION_NAMESPACE:-models-as-a-service}"
 MODEL_NAMESPACE="${MODEL_NAMESPACE:-llm}"
 
-wait_for_gateway_programmed() {
-    local gateway_name="${1:-$GATEWAY_NAME}"
-    local gateway_ns="${2:-$GATEWAY_NAMESPACE}"
-    local timeout="${3:-$GATEWAY_PROGRAMMED_TIMEOUT}"
-
-    echo "Waiting for Gateway ${gateway_ns}/${gateway_name} to be Programmed=True (timeout: ${timeout}s)..."
-
-    if oc wait "gateway/${gateway_name}" -n "${gateway_ns}" --for=condition=Programmed --timeout="${timeout}s"; then
-        echo "✅ Gateway ${gateway_ns}/${gateway_name} is Programmed"
-        return 0
-    fi
-
-    echo "❌ ERROR: Gateway ${gateway_ns}/${gateway_name} did not reach Programmed=True within ${timeout}s"
-    oc get "gateway/${gateway_name}" -n "${gateway_ns}" -o wide || true
-    oc describe "gateway/${gateway_name}" -n "${gateway_ns}" || true
-    return 1
-}
-
 wait_for_auth_policies_enforced() {
     local timeout="$AUTHPOLICY_TIMEOUT"
     echo "Waiting for Kuadrant AuthPolicies to be enforced (timeout: ${timeout}s)..."
